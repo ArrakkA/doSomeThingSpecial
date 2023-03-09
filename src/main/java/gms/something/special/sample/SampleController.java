@@ -1,5 +1,4 @@
-package gms.something.special.domain.sample;
-
+package gms.something.special.sample;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,6 @@ public class SampleController {
             @RequestBody SampleDTO sampleDTO
     ){
         sampleService.mapperSave(sampleDTO);
-
         return ResponseEntity.ok().build();
     }
 
@@ -33,8 +31,8 @@ public class SampleController {
             @RequestBody SampleDTO sampleDTO
     ){
         sampleService.noMapperSave(sampleDTO);
-
         return ResponseEntity.ok().build();
+
     }
 
     @ApiOperation(value = "mapper 사용 찾기")
@@ -43,7 +41,6 @@ public class SampleController {
             @RequestParam String aaa
     ){
         String result = sampleService.mapperFind(aaa);
-
         return ResponseEntity.ok().body(result);
     }
 

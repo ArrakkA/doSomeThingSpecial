@@ -1,4 +1,4 @@
-package gms.something.special.domain.sample;
+package gms.something.special.sample;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

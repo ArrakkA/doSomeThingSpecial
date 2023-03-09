@@ -1,4 +1,4 @@
-package gms.something.special.domain.sample;
+package gms.something.special.sample;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

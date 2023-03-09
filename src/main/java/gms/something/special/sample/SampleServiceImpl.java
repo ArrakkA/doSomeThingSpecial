@@ -1,4 +1,4 @@
-package gms.something.special.domain.sample;
+package gms.something.special.sample;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
