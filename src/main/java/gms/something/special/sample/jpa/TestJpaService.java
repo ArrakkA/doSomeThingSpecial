@@ -5,7 +5,7 @@ public interface TestJpaService {
 
     void jpaSave(TestExample testExample);
 
-    String jpaFind(int num);
+    String jpaFind(String id);
 
 
 }
