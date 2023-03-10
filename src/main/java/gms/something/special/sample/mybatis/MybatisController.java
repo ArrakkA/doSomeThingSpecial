@@ -1,5 +1,4 @@
-package gms.something.special.domain.sample;
-
+package gms.something.special.sample.mybatis;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -13,28 +12,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequiredArgsConstructor
 @Api(tags = {"샘플 데이터 Mybatis API"})
-public class SampleController {
+public class MybatisController {
 
-    private final SampleService sampleService;
+    private final MybatisService mybatisService;
 
     @ApiOperation(value = "mapper 사용 저장")
     @PostMapping("v1/sample/mapper")
     public ResponseEntity sampleMapperRegister(
-            @RequestBody SampleDTO sampleDTO
+            @RequestBody MybatisDTO mybatisDTO
     ){
-        sampleService.mapperSave(sampleDTO);
-
+        mybatisService.mapperSave(mybatisDTO);
         return ResponseEntity.ok().build();
     }
 
     @ApiOperation(value = "mapper 사용 안한 저장")
     @PostMapping("v1/sample/no_mapper")
     public ResponseEntity sampleNoMapperRegister(
-            @RequestBody SampleDTO sampleDTO
+            @RequestBody MybatisDTO mybatisDTO
     ){
-        sampleService.noMapperSave(sampleDTO);
-
+        mybatisService.noMapperSave(mybatisDTO);
         return ResponseEntity.ok().build();
+
     }
 
     @ApiOperation(value = "mapper 사용 찾기")
@@ -42,8 +40,7 @@ public class SampleController {
     public ResponseEntity sampleMapperFind(
             @RequestParam String aaa
     ){
-        String result = sampleService.mapperFind(aaa);
-
+        String result = mybatisService.mapperFind(aaa);
         return ResponseEntity.ok().body(result);
     }
 
@@ -52,7 +49,7 @@ public class SampleController {
     public ResponseEntity sampleNoMapperFind(
             @RequestParam String bbb
     ){
-        String result = sampleService.noMapperFind(bbb);
+        String result = mybatisService.noMapperFind(bbb);
 
         return ResponseEntity.ok().body(result);
     }

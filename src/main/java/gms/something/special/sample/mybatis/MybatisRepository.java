@@ -1,18 +1,18 @@
-package gms.something.special.domain.sample;
+package gms.something.special.sample.mybatis;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface SampleRepository {
+public interface MybatisRepository {
 
-    void save1(SampleDTO sampleDTO);
+    void save1(MybatisDTO mybatisDTO);
 
     @Insert("insert into " +
             "aaa(aaa, bbb) " +
             "values( #{aaa}, #{bbb} ) ")
-    void save2(SampleDTO sampleDTO);
+    void save2(MybatisDTO mybatisDTO);
 
     String find1(String aaa);
 
