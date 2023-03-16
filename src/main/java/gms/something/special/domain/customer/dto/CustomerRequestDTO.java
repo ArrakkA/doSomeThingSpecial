@@ -25,7 +25,7 @@ public class CustomerRequestDTO {
 
     //개인 정보
     private String sex;                   //성별
-    private String birth;                  //생일
+    private String birth;                 //생일
     private int nation;                   //국적  1:국내 , 2:국외
     private String email;                 //이메일
     private String weddingDay;            //결혼 기념일
@@ -33,19 +33,29 @@ public class CustomerRequestDTO {
     private String personNum1;            //주민번호
     private String personNum2;
 
+    private String firstPhone1;           //핸드폰 1
+    private String midPhone1;
+    private String lastPhone1;
+
+    private String firstPhone2;           //핸드폰 2
+    private String midPhone2;
+    private String lastPhone2;
+
     private String carNum;                //차 번호
     private String handy;                 //핸디
 
 
-    private String homeZip;               //집
+    private String homeZip;                //집
     private String homeAddr1;
     private String homeAddr2;
     private String homeTel;
 
     private String companyZip;             //회사
+    private String companyName;
     private String companyAddr1;
     private String companyAddr2;
     private String companyTel;
+    private String companyFax;
 
     private boolean emailYn;               //이메일 수신 여부
     private boolean wedding;               //결혼 여부

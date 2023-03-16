@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+import static java.time.LocalDateTime.now;
+
 @Entity
 @Table(name = "ms_maininfo")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -141,18 +143,18 @@ public class Customer {
         this.msBirthyl = msBirthyl;
         this.msEmail = dto.getEmail();
         this.msWeddingday = dto.getWeddingDay();
-        this.msFirstPhone1 = msFirstPhone1;
-        this.msMidPhone1 = msMidPhone1;
-        this.msLastPhone1 = msLastPhone1;
-        this.msFirstPhone2 = msFirstPhone2;
-        this.msMidPhone2 = msMidPhone2;
-        this.msLastPhone2 = msLastPhone2;
+        this.msFirstPhone1 = dto.getFirstPhone1();
+        this.msMidPhone1 = dto.getMidPhone1();
+        this.msLastPhone1 = dto.getLastPhone1();
+        this.msFirstPhone2 = dto.getFirstPhone2();
+        this.msMidPhone2 = dto.getMidPhone2();
+        this.msLastPhone2 = dto.getLastPhone2();
         this.msBlank = msBlank;
         this.msHometel = dto.getHomeTel();
         this.msHomezip = dto.getHomeZip();
         this.msHomeaddr1 = dto.getHomeAddr1();
         this.msHomeaddr2 = dto.getHomeAddr2();
-        this.msCarNo = msCarNo;
+        this.msCarNo = dto.getCarNum();
         this.smsChk1 = Common.ynToString(dto.isSmsChk1());
         this.smsChk2 = Common.ynToString(dto.isSmsChk2());
         this.msCyberyn = Common.ynToString(dto.isCyberYn());
@@ -163,9 +165,9 @@ public class Customer {
         this.msPostYn = Common.ynToString(dto.isPostYn());
         this.msEmailYn = Common.ynToString(dto.isEmailYn());
         this.msWedding = Common.ynToString(dto.isWedding());
-        this.msCompanyName = msCompanyName;
+        this.msCompanyName = dto.getCompanyName();
         this.msComptel = dto.getCompanyTel();
-        this.msCompfax = msCompfax;
+        this.msCompfax = dto.getCompanyFax();
         this.msCompzip = dto.getCompanyZip();
         this.msCompaddr1 = dto.getCompanyAddr1();
         this.msCompaddr2 = dto.getCompanyAddr2();
@@ -177,20 +179,20 @@ public class Customer {
         this.msDmtel = msDmtel;
         this.msDmfax = msDmfax;
         this.msDmemail = msDmemail;
-        this.msWeekdayCnt = msWeekdayCnt;
-        this.msWeekendCnt = msWeekendCnt;
-        this.msUnregiCnt = msUnregiCnt;
+        this.msWeekdayCnt = 0;
+        this.msWeekendCnt = 0;
+        this.msUnregiCnt = 0;
         this.msEntrustCnt = dto.getEntrustCnt();
         this.msInsuday = msInsuday;
         this.msFirstday = msFirstday;
-        this.msTakeAmt = msTakeAmt;
         this.msRegday = msRegday;
         this.msEndday = msEndday;
+        this.msTakeAmt = msTakeAmt;
         this.inputStaff = dto.getAdmin();
-        this.inputDatetime = inputDatetime;
+        this.inputDatetime = now();
         this.inputIp = inputIp;
         this.updateStaff = dto.getAdmin();
-        this.updateDatetime = updateDatetime;
+        this.updateDatetime = now();
         this.updateIp = updateIp;
     }
 }
