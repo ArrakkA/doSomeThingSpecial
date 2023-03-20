@@ -1,11 +1,13 @@
 package gms.something.special.domain.inventory.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 @Data
-public class realAmountRequestDTO {
-    private String codiv;
+@Builder
+public class RealAmountRequestDTO {
+    private String coDiv;
     private String month;
     private String shopCd;
     private String pdCd;
