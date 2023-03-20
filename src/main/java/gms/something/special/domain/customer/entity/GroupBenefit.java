@@ -1,18 +1,22 @@
 package gms.something.special.domain.customer.entity;
 
 
+import gms.something.special.domain.customer.dto.GroupBenefitRequestDTO;
 import gms.something.special.domain.customer.entity.id.GroupBenefitID;
+import gms.something.special.globals.common.Common;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ms_benefit")
 @IdClass(GroupBenefitID.class)
-public class GroupBenefit {
+@EntityListeners(AuditingEntityListener.class)
+public class GroupBenefit implements Persistable<GroupBenefitID> {
 
     @Id
     private String coDiv;                                       //사업장
@@ -45,41 +49,53 @@ public class GroupBenefit {
     private int mbCWeekendCnt;                                  //콘도 주말 횟수
 
     private String inputStaff;                                  //최초 입력자
+    @CreatedDate
     private LocalDateTime inputDatetime;
     private String inputIp;
 
     private String updateStaff;                                 //최종 수정자
+    @LastModifiedDate
     private LocalDateTime updateDatetime;
     private String updateIp;
 
     public GroupBenefit(){
     }
 
-    public GroupBenefit(String coDiv, String msDivision, String msClass, String msLevel, String mb_gubun_ect, String mb_target, int mbFoodRate, int mbProshopRate, int mbCartRate, String mbContent, String mbSday, String mbEday, String mbBigo, String bmEntrustYn, int mbEntrustCnt, int mbWeekdayCnt, int mbWeekendCnt, int mbCWeekdayCnt, int mbCWeekendCnt, String inputStaff, LocalDateTime inputDatetime, String inputIp, String updateStaff, LocalDateTime updateDatetime, String updateIp) {
-        this.coDiv = coDiv;
-        this.msDivision = msDivision;
-        this.msClass = msClass;
-        this.msLevel = msLevel;
-        this.mb_gubun_ect = mb_gubun_ect;
-        this.mb_target = mb_target;
-        this.mbFoodRate = mbFoodRate;
-        this.mbProshopRate = mbProshopRate;
-        this.mbCartRate = mbCartRate;
-        this.mbContent = mbContent;
-        this.mbSday = mbSday;
-        this.mbEday = mbEday;
-        this.mbBigo = mbBigo;
-        this.bmEntrustYn = bmEntrustYn;
-        this.mbEntrustCnt = mbEntrustCnt;
-        this.mbWeekdayCnt = mbWeekdayCnt;
-        this.mbWeekendCnt = mbWeekendCnt;
-        this.mbCWeekdayCnt = mbCWeekdayCnt;
-        this.mbCWeekendCnt = mbCWeekendCnt;
-        this.inputStaff = inputStaff;
+    public GroupBenefit(GroupBenefitRequestDTO dto) {
+        this.coDiv = dto.getCoDiv();
+        this.msDivision = dto.getMemDivision();
+        this.msClass = dto.getMemClass();
+        this.msLevel = dto.getLevel();
+        this.mb_gubun_ect = dto.getEct();
+        this.mb_target = dto.getTarget();
+        this.mbFoodRate = dto.getFoodRate();
+        this.mbProshopRate = dto.getProShopRate();
+        this.mbCartRate = dto.getCartRate();
+        this.mbContent = dto.getContent();
+        this.mbSday = dto.getStartDay();
+        this.mbEday = dto.getEndDay();
+        this.mbBigo = dto.getBigo();
+        this.bmEntrustYn = Common.ynToString(dto.isEntrustYn());
+        this.mbEntrustCnt = dto.getEntrustCnt();
+        this.mbWeekdayCnt = dto.getCondoWeekdayCnt();
+        this.mbWeekendCnt = dto.getCondoWeekendCnt();
+        this.mbCWeekdayCnt = dto.getCondoWeekdayCnt();
+        this.mbCWeekendCnt = dto.getCondoWeekendCnt();
+        this.inputStaff = dto.getStaff();
         this.inputDatetime = inputDatetime;
         this.inputIp = inputIp;
-        this.updateStaff = updateStaff;
+        this.updateStaff = dto.getStaff();
         this.updateDatetime = updateDatetime;
         this.updateIp = updateIp;
+    }
+
+    @Override
+    public GroupBenefitID getId() {
+        return new GroupBenefitID(coDiv, msDivision, msClass, msLevel);
+    }
+
+    @Override
+    public boolean isNew() {
+        return inputDatetime == null;
     }
 }

@@ -2,9 +2,6 @@ package gms.something.special.domain.customer.dto;
 
 import lombok.Data;
 
-import javax.persistence.Id;
-import java.time.LocalDateTime;
-
 @Data
 public class GroupBenefitRequestDTO {
 
