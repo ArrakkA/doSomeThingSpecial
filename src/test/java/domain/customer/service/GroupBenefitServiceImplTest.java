@@ -1,7 +1,8 @@
-package gms.something.special.domain.customer.service;
+package domain.customer.service;
 
 import gms.something.special.domain.customer.dto.GroupBenefitRequestDTO;
 import gms.something.special.domain.customer.entity.GroupBenefit;
+import gms.something.special.domain.customer.service.GroupBenefitService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @Transactional
 class GroupBenefitServiceImplTest {
-    @Autowired
-    private GroupBenefitService groupBenefitService;
+    private final GroupBenefitService groupBenefitService;
+
+    GroupBenefitServiceImplTest(GroupBenefitService groupBenefitService) {
+        this.groupBenefitService = groupBenefitService;
+    }
 
 
     @Test

@@ -1,6 +1,7 @@
-package gms.something.special.domain.inventory.repository;
+package domain.inventory.repository;
 
 import gms.something.special.domain.inventory.dto.RealAmountRequestDTO;
+import gms.something.special.domain.inventory.repository.InventoryRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
