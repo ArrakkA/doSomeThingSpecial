@@ -3,8 +3,9 @@
 
 <mapper namespace="gms.something.special.sample.mybatis.MybatisRepository">
 
+    <!-- aaa 테이블 save  -->
     <insert id="save1" parameterType="gms.something.special.sample.mybatis.MybatisDTO">
-        insert into aaa( aaa, bbb)
+        insert into aaa(aaa, bbb)
             values (#{aaa}, #{bbb})
     </insert>
 
@@ -12,5 +13,4 @@
         select a.bbb from aaa a
         where a.aaa = #{aaa}
     </select>
-
 </mapper>

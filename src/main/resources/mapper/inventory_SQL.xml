@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gms.something.special.domain.inventory.repository.InventoryRepository">
+
+    <insert id="realAmount" parameterType="gms.something.special.domain.inventory.dto.RealAmountRequestDTO">
+        insert into pd_real(
+            co_div
+            ,pd_month
+            ,pd_shop_cd
+            ,pd_cd
+            ,pd_jego_qty
+            ,pd_chul_qty
+            ,input_staff
+            ,input_datetime
+            ,input_ip
+            ) values (
+            #{coDiv}
+            ,#{month}
+            ,#{shopCd}
+            ,#{pdCd}
+            ,#{pdJegoQty}
+            ,#{pdChulQty}
+            ,#{staff}
+            ,#{dateTime}
+            ,#{ip}
+           )
+    </insert>
+
+    <select id="realAmountFind" resultType="int">
+        select count(*) from pd_real a
+         where a.pd_month = #{month}
+           and a.pd_shop_cd = #{shopCd}
+           and a.pd_cd = #{cd}
+    </select>
+
+</mapper>
