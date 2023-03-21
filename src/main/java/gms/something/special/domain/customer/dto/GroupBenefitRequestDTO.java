@@ -1,8 +1,10 @@
 package gms.something.special.domain.customer.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class GroupBenefitRequestDTO {
 
     private String coDiv;                                      //사업장

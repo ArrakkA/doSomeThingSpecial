@@ -1,8 +1,5 @@
 package gms.something.special.domain.customer.entity.id;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 public class GroupBenefitID implements Serializable {
     private String coDiv;
